@@ -77,7 +77,7 @@ const server = {
       if (!this.doesUserExist(username)) {
         users[username] = hashSync(password, salt)
         localStorage.users = JSON.stringify(users)
-
+        console.log(localStorage);
         // Resolve when done
         resolve({registered: true})
       } else {

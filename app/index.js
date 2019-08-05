@@ -18,6 +18,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
+import Write from './components/Write'
 import NotFound from './components/NotFound'
 
 const logger = createLogger({
@@ -44,7 +45,7 @@ function checkAuth (nextState, replace) {
 
   // Check if the path isn't dashboard. That way we can apply specific logic to
   // display/render the path we want to
-  if (nextState.location.pathname !== '/dashboard') {
+  if (nextState.location.pathname !== '/dashboard' && nextState.location.pathname !== '/write') {
     if (loggedIn) {
       if (nextState.location.state && nextState.location.pathname) {
         replace(nextState.location.pathname)
@@ -77,6 +78,7 @@ class LoginFlow extends Component {
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <Route path='/dashboard' component={Dashboard} />
+              <Route path='/write' component={Write} />
             </Route>
             <Route path='*' component={NotFound} />
           </Route>
